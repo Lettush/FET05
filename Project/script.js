@@ -12,7 +12,7 @@
 // document.querySelector("h1");
 // console.log(document.querySelector("h1"));
 
-// querySelectorAll = targets ALL OCCURENCES of any element/attribue
+// querySelectorAll = targets ALL OCCURENCES of any element/attribute
 // document.querySelectorAll("h1");
 // console.log(document.querySelectorAll("h1"));
 
@@ -96,5 +96,26 @@ function deleteOrCompleteTodo(event) {
 }
 
 function filterTodos(event) {
+    const todos = todoList.childNodes;
 
+    todos.forEach(function (todo) {
+        switch (event.target.value) {
+            case "all":
+                todo.style.display = "flex";
+                break;
+            case "completed":
+                if (todo.classList.contains("completed")) {
+                    todo.style.display = "flex";
+                } else {
+                    todo.style.display = "none";
+                }
+                break;
+            case "uncompleted":
+                if (!todo.classList.contains("completed")) {
+                    todo.style.display = "flex";
+                } else {
+                    todo.style.display = "none";
+                }
+        }
+    })
 }
